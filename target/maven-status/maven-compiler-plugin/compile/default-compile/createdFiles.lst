@@ -1,0 +1,13 @@
+controle\IndexControle.class
+modelo\Animal.class
+dao\DaoUsuario.class
+util\TutorConverter.class
+util\JpaUtil.class
+com\hospitalvet\resources\JavaEE8Resource.class
+controle\NovoUsuarioControle.class
+com\hospitalvet\JAXRSConfiguration.class
+dao\Dao.class
+controle\TutorControle.class
+modelo\Tutor.class
+controle\GerenciarAnimalControle.class
+modelo\Usuario.class
