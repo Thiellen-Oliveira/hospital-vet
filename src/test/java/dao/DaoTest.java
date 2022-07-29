@@ -6,6 +6,7 @@ package dao;
 
 import java.util.List;
 import modelo.Animal;
+import modelo.Consulta;
 import modelo.Tutor;
 import modelo.Usuario;
 import org.junit.jupiter.api.AfterEach;
@@ -92,5 +93,19 @@ public class DaoTest {
 //        }
 //    }
     
-    
+////    @Test
+////    public void testInserirConculta() {
+////    Dao<Animal> daoAnimal = new Dao(Animal.class);
+////    Animal a = daoAnimal.buscarPorId(5);
+////    Consulta c = new Consulta();
+////    Dao<Consulta> daoConsulta = new Dao(Consulta.class);
+////    c.setAnimal(a);
+////    c.setDate(new java.util.Date());
+////    c.setDetalhes("teste");
+////    daoConsulta.inserir(c);
+//    
+//    
+//    
+//    
+//    }
 }

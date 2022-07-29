@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit this template
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <h:head>
+        <title>Hospital Veterinário</title>
+        
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:panelGrid columns="2">
+           
+            
+            
+            <h:outputLabel for="date" value="Data"/>
+            
+            <p:calendar id="data" pattern="dd/MM/yyyy"
+                        value = "#{consultaControle.consulta.date}"
+                        showOn="button"
+                        locale="pt"/>
+                        
+            
+            
+            <h:outputLabel for="detalhes" value="Detalhes"/>
+            <p:inputText id="detalhes" value="#{consultaControle.consulta.detalhes}"
+                        required="true" requiredMessage="Informe os Detalhes"/>
+            
+            
+            
+             <h:outputLabel value="Animal: " />
+
+                <p:selectOneMenu id="comboConsulta" converter="animalConverter" 
+                                 required="true" requiredMessage="Selecione um animal"  
+                                 value="#{consultaControle.consulta.animal}" >
+                    <f:selectItem itemValue="#{null}" itemLabel="Escolha um animal" 
+                                  noSelectionOption="false"/>
+                    <f:selectItems value="#{consultaControle.animais}" 
+                                   var="tut"
+                                   itemValue="#{tut}"
+                                   itemLabel="#{tut.nome}"/>
+                </p:selectOneMenu>
+            
+            
+           
+             <p:commandButton value="Cancelar" 
+                              action="menu" immediate="true"
+                             />
+            
+            <p:commandButton value="Cadastrar" 
+                             action="#{consultaControle.inserir()}"
+                             update="@form" />
+            
+           
+            
+            
+            
+            </h:panelGrid>
+            <p:messages showIcon="false" closable="true" />
+        </h:form>  
+            
+    </h:body>
+</html>

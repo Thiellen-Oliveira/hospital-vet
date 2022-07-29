@@ -1,9 +1,12 @@
+util\AnimalConverter.class
 controle\IndexControle.class
 modelo\Animal.class
+modelo\Consulta.class
 dao\DaoUsuario.class
 util\TutorConverter.class
 util\JpaUtil.class
 com\hospitalvet\resources\JavaEE8Resource.class
+controle\ConsultaControle.class
 controle\NovoUsuarioControle.class
 com\hospitalvet\JAXRSConfiguration.class
 dao\Dao.class
