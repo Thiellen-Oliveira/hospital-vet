@@ -9,6 +9,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import modelo.Usuario;
+import util.Sessao;
 
 @Named
 @ViewScoped
@@ -31,6 +32,7 @@ public class IndexControle implements Serializable {
             );
             return null ;
         }
+        Sessao.setUsuario(temp);
         return "menu"; 
     }
     

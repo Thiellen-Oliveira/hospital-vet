@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit this template
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:p="http://primefaces.org/ui">
+          
+
+   <h:head>
+        <title>Hospital Veterinário</title>
+    </h:head>
+    <h:body>
+        
+         <h:form>
+            <h:panelGrid columns="2">
+            <h:outputLabel for="login" value="Login"/>
+            <p:inputText id="login" value="#{novoUsuarioControle.usuario.login}"
+                         required="true" requiredMessage="Login obrigatório"/>
+            
+            <h:outputLabel for="nome" value="Nome"/>
+            <p:inputText id="nome" value="#{novoUsuarioControle.usuario.nome}"
+                         required="true" requiredMessage="Nome obrigatório"/>
+            
+            <h:outputLabel for="senha" value="Senha"/>
+            <p:password id="senha" value="#{novoUsuarioControle.usuario.senha}"
+                        required="true" requiredMessage="Senha obrigatória"/>
+            
+           
+             <p:commandButton value="Cancelar" 
+                             action="#{novoUsuarioControle.cancelar()}"
+                             update="@form" />
+            
+            <p:commandButton value="Gravar" 
+                             action="#{novoUsuarioControle.gravar()}"
+                             update="@form" />
+            
+           
+            
+            
+            
+            </h:panelGrid>
+            <p:messages showIcon="false" closable="true" />
+        </h:form>  
+            
+    </h:body>
+</html>

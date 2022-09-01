@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit this template
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <title>Hospital Veterinário</title>
+        <h:outputScript name="js/script.js"/>
+        <h:outputStylesheet name="css/estilo.css"/>
+
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:panelGrid columns="2">
+
+
+
+                <h:outputLabel for="date" value="Data"/>
+
+                <p:calendar id="data" pattern="dd/MM/yyyy"
+                            value = "#{novaConsultaControle.consulta.date}"
+                            showOn="button"
+                            locale="pt"/>
+
+
+
+                <h:outputLabel for="detalhes" value="Detalhes"/>
+                <p:inputText id="detalhes" value="#{novaConsultaControle.consulta.detalhes}"
+                             required="true" requiredMessage="Informe os Detalhes"/>
+
+
+                <h:outputLabel value="Tutor: " />
+
+
+                <p:selectOneMenu id="comboTutor" converter="tutorConverter" 
+                                 required="true" requiredMessage="Selecione um tutor"  
+                                 value="#{novaConsultaControle.tutor}" >
+                    <f:selectItem itemValue="#{null}" itemLabel="Escolha um tutor" 
+                                  noSelectionOption="false"/>
+                    <f:selectItems value="#{novaConsultaControle.tutores}" 
+                                   var="tut"
+                                   itemValue="#{tut}"
+                                   itemLabel="#{tut.nome}"/>
+
+                    <p:ajax listener = "#{novaConsultaControle.atualizar()}" 
+                            update="comboAnimais"/>
+
+                </p:selectOneMenu>
+
+                <h:outputLabel value="Animal: " />
+
+
+                <p:selectOneMenu id="comboAnimais" converter="animalConverter" 
+                                 required="true" requiredMessage="Selecione um animal"  
+                                 value="#{novaConsultaControle.consulta.animal}" >
+                    <f:selectItem itemValue="#{null}" itemLabel="Escolha um animal" 
+                                  noSelectionOption="false"/>
+                    <f:selectItems value="#{novaConsultaControle.animais}" 
+                                   var="ani"
+                                   itemValue="#{ani}"
+                                   itemLabel="#{ani.nome}"/>
+
+                    <p:ajax event= "change" update="formTabela"/> 
+                    
+
+                </p:selectOneMenu>
+
+
+                <p:commandButton value="Cancelar" styleClass="botao"
+                                 action="menu" immediate="true"
+                                 />
+
+                <p:commandButton value="Cadastrar" 
+                                 action="#{novaConsultaControle.inserir()}"
+                                 update="@form" />
+            </h:panelGrid>
+        </h:form>  
+              
+        <p/>
+
+
+        <div id="divtab">
+            <h:form id="formTabela">  
+                <p:dataTable id="tabelaAnimais"
+                             value="#{novaConsultaControle.consulta.animal.consultas}" 
+                             var="item"
+                             lazy="true"
+                             emptyMessage="Nenhum tutor cadastrado"
+                             tableStyle="width:auto;  min-width: 100%" >
+                    <p:column sortBy="#{item.id}">
+                        <f:facet name="header">
+                            <h:outputText value="Id"/>
+                        </f:facet>
+                        <h:outputText value="#{item.id}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Data"/>
+                        </f:facet>
+                        <h:outputText value="#{item.date}"/>
+                    </p:column>
+
+
+                    <p:column >
+                        <f:facet name="header">
+                            <h:outputText value="Detalhes"/>
+                        </f:facet>
+                        <h:outputText value="#{item.detalhes}"/>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+        </div>
+
+
+
+
+
+
+
+
+
+       
+       
+
+    </h:body>
+</html>
+
