@@ -21,14 +21,17 @@ import modelo.Tutor;
 public class TutorControle implements Serializable{
     
     private Tutor tutor;
-    Dao dao; 
+    private Tutor tutorAlterar;
+    private Dao<Tutor> dao;
     private List<Tutor> listaTutores;
+    private boolean mostraPopup; 
     
     @PostConstruct
     public void iniciar() {
         setTutor(new Tutor());
         dao = new Dao(Tutor.class);
         setListaTutores(dao.listarTodos());
+        mostraPopup = false; 
     }
     
     public void gravar() {
@@ -46,6 +49,26 @@ public class TutorControle implements Serializable{
 //        tutor = new Tutor(); 
 //        dao = new Dao(Tutor.class); 
 //    }
+    
+    public void preparaAlterar(Tutor aux){
+        System.out.println(aux.getNome());
+        tutorAlterar = aux;
+        mostraPopup = true; 
+    }
+    
+     public void cancelarAlteracao(){
+        mostraPopup = false; 
+    }
+     
+       public void salvarAlteracao(){
+        dao.alterar(tutorAlterar);
+        FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage
+            (FacesMessage.SEVERITY_INFO, "Tutor alterado", null)
+            );
+        tutorAlterar = new Tutor();
+        listaTutores = dao.listarTodos();
+    }
     
      public void excluirTutor(Tutor excluido) {
         dao.excluir(excluido.getId());
@@ -67,5 +90,21 @@ public class TutorControle implements Serializable{
     public void setListaTutores(List<Tutor> listaTutores) {
         this.listaTutores = listaTutores;
     }
+    public boolean isMostraPopup() {
+        return mostraPopup;
+    }
+
+    public void setMostraPopup(boolean mostraPopup) {
+        this.mostraPopup = mostraPopup;
+    }
+
+    public Tutor getTutorAlterar() {
+        return tutorAlterar;
+    }
+
+    public void setTutorAlterar(Tutor tutorAlterar) {
+        this.tutorAlterar = tutorAlterar;
+    }
+
 
 }

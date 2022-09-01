@@ -49,6 +49,8 @@ public class Consulta implements Serializable  {
     public void setId(Integer id) {
         this.id = id;
     }
+    
+    
 
     public Animal getAnimal() {
         return animal;
@@ -74,34 +76,34 @@ public class Consulta implements Serializable  {
         this.detalhes = detalhes;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 79 * hash + Objects.hashCode(this.id);
-        hash = 79 * hash + Objects.hashCode(this.animal);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Consulta other = (Consulta) obj;
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        if (!Objects.equals(this.animal, other.animal)) {
-            return false;
-        }
-        return true;
-    }
+//    @Override
+//    public int hashCode() {
+//        int hash = 5;
+//        hash = 79 * hash + Objects.hashCode(this.id);
+//        hash = 79 * hash + Objects.hashCode(this.animal);
+//        return hash;
+//    }
+//
+//    @Override
+//    public boolean equals(Object obj) {
+//        if (this == obj) {
+//            return true;
+//        }
+//        if (obj == null) {
+//            return false;
+//        }
+//        if (getClass() != obj.getClass()) {
+//            return false;
+//        }
+//        final Consulta other = (Consulta) obj;
+//        if (!Objects.equals(this.id, other.id)) {
+//            return false;
+//        }
+//        if (!Objects.equals(this.animal, other.animal)) {
+//            return false;
+//        }
+//        return true;
+//    }
 
     public Consulta() {
     }
